@@ -9,10 +9,11 @@ import {
   UPDATE_STREAM,
 } from "./types";
 
-export const signIn = () => {
+export const signIn = (userId) => {
   // bindActionCreators is automatically called
   return {
-    type: SIGN_IN
+    type: SIGN_IN,
+    payload: userId,
   };
 };
 
@@ -22,8 +23,15 @@ export const signOut = () => {
   }
 }
 
-export const createStream = (formValues) => async (dispatch) => {
-  const response = await streams.post('/streams', formValues);
+export const createStream = (formValues) => async (dispatch, getState) => {
+  console.log("getState()")
+  console.log(getState())
+  const { userId } = getState().auth
+  console.log("formValues")
+  console.log(formValues, userId)
+  const response = await streams.post('/streams', { ...formValues, userId });
+  console.log("response")
+  console.log(response)
   dispatch({ type: CREATE_STREAM, payload: response.data });
 };
 

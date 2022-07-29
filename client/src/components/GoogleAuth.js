@@ -16,7 +16,7 @@ class GoogleAuth extends React.Component {
         console.log(this.auth)
         // isSignedIn内のprototypeにて定義されている。　listenも同様
         // this.setState({ isSignedIn: this.auth.isSignedIn.get() })
-        this.onAuthChange(this.auth.isSignedIn.get())
+        this.onAuthChange(this.auth.isSignedIn.get());
         // listenerを設定出来る
         this.auth.isSignedIn.listen(this.onAuthChange);
       })
@@ -26,7 +26,7 @@ class GoogleAuth extends React.Component {
   onAuthChange = (isSignedIn) => {
     // this.setState({ isSignedIn: this.auth.isSignedIn.get()})
     if (isSignedIn) {
-      this.props.signIn();
+      this.props.signIn(this.auth.currentUser.get().getId());
     } else {
       this.props.signOut();
     }
@@ -77,7 +77,10 @@ class GoogleAuth extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { isSignedIn: state.auth.isSignedIn };
+  return {
+    isSignedIn: state.auth.isSignedIn,
+    userId: state.auth.uesrId,
+  };
 }
 
 export default connect(
