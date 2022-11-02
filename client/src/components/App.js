@@ -15,8 +15,9 @@ const App = () => {
         <Header />
         {/* default: contains containsだとurlにpathが"含まれる場合飛ばされる" */}
         <Route path="/streams/new" exact component={StreamCreate} />
-        <Route path="/streams/edit" exact component={StreamEdit} />
-        <Route path="/streams/delete" exact component={StreamDelete} />
+        {/* :変数で必須 :変数?でoptional*/}
+        <Route path="/streams/edit/:id/:hoge?" exact component={StreamEdit} />
+        <Route path="/streams/delete/:id" exact component={StreamDelete} />
         <Route path="/streams/show" exact component={StreamShow} />
         <Route path="/" exact component={StreamList} />
       </Router>
