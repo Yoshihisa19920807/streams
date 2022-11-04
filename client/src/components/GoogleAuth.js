@@ -13,8 +13,8 @@ class GoogleAuth extends React.Component {
         // const auth = window.gapi.auth2.getAuthInstance()
         // auth.signIn()
         this.auth = window.gapi.auth2.getAuthInstance();
-        console.log("this.auth")
-        console.log(this.auth)
+        // console.log("this.auth")
+        // console.log(this.auth)
         // isSignedIn内のprototypeにて定義されている。　listenも同様
         // this.setState({ isSignedIn: this.auth.isSignedIn.get() })
         this.onAuthChange(this.auth.isSignedIn.get());
@@ -35,7 +35,7 @@ class GoogleAuth extends React.Component {
   }
 
   onClickSignIn = () => {
-    console.log("onclickSignin")
+    // console.log("onclickSignin")
     this.auth.signIn()
   }
 

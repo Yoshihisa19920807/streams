@@ -9,6 +9,9 @@ class StreamList extends React.Component {
   }
 
   renderAdmin(stream) {
+    // console.log("renderAdmin")
+    // console.log(stream.userId)
+    // console.log(this.props.currentUserId)
     if (stream.userId === this.props.currentUserId) {
       return (
         <div className='right floated content'>
@@ -33,6 +36,8 @@ class StreamList extends React.Component {
 
   renderList() {
     return this.props.streams.map(stream => {
+      console.log("stream.title")
+      console.log(stream.title)
       return (
         <div className="item" key={stream.id}>
           {/* ここに入れないと改行した上で右に表示されてしまう */}

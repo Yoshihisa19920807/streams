@@ -11,9 +11,9 @@ class StreamEdit extends React.Component {
   }
 
   onSubmit = (formValues) => {
-    console.log("formValues")
-    console.log(formValues)
-    this.props.updateStream(formValues)
+    // console.log("formValues")
+    // console.log(formValues)
+    this.props.updateStream(this.props.match.params.id, formValues)
   }
 
   renderError = ({ error, touched }) => {
@@ -51,8 +51,8 @@ class StreamEdit extends React.Component {
   // }
 
   render() {
-    console.log("this.props")
-    console.log(this.props)
+    // console.log("this.props")
+    // console.log(this.props)
     return (
       <div>
         <h3>Edit a Stream</h3>

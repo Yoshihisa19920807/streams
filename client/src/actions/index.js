@@ -25,7 +25,8 @@ export const signOut = () => {
 }
 
 export const createStream = (formValues) => async (dispatch, getState) => {
-  console.log(formValues)
+  // console.log("formValues_create")
+  // console.log(formValues)
   const { userId } = getState().auth
   const response = await streams.post('/streams', { ...formValues, userId });
   await dispatch({ type: CREATE_STREAM, payload: response.data });
@@ -34,7 +35,7 @@ export const createStream = (formValues) => async (dispatch, getState) => {
 
 export const fetchStreams = () => async (dispatch) => {
   const response = await streams.get('/streams');
-  console.log("fetchStreams")
+  // console.log("fetchStreams")
   dispatch({ type: FETCH_STREAMS, payload: response.data });
 };
 
@@ -45,9 +46,11 @@ export const fetchStream = (id) => async (dispatch) => {
 }
 
 export const updateStream = (id, formValues) => async (dispatch) => {
-  console.log(formValues)
-  const response = await streams.put(`/streams/${id}`, formValues);
+  // console.log(formValues)
+  // const { userId } = getState().auth
+  const response = await streams.patch(`/streams/${id}`, formValues);
   dispatch({ type: UPDATE_STREAM, payload: response.data });
+  history.push('/');
 }
 
 export const deleteStream = (id) => async (dispatch) => {
