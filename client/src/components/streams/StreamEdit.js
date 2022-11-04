@@ -70,7 +70,6 @@ const mapStateToProps = (state, ownprops) => {
   // console.log(state.streams)
   // console.log(ownprops.match.params.id)
   // console.log(state.streams[ownprops.match.params.id])
-  console.log()
   return {
     stream: state.streams[ownprops.match.params.id]
   }
